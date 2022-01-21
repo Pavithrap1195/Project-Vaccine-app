@@ -1,0 +1,19 @@
+header {
+	font-size: 200%;
+	color: rgb(17, 233, 17);
+	background-color: cyan;
+	text-align: center;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+footer{
+    text-align: center;
+    font-size: 150%;
+    border-style: groove;
+    background-color: rgb(233, 160, 174);
+    font-family: cursive;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    color: blue;
+    font-size: 150%;
+}
