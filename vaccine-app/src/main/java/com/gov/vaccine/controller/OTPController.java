@@ -1,0 +1,52 @@
+package com.gov.vaccine.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.gov.vaccine.entity.UserOTPEntity;
+import com.gov.vaccine.service.RegistrationService;
+
+@Controller
+@RequestMapping("/")
+public class OTPController {
+
+	@Autowired
+	private RegistrationService registrationService;
+
+	private String email;
+
+	public String getEmail() {
+		return email;
+	}
+
+	@RequestMapping(value = "/getOTP.vaccine", method = RequestMethod.POST)
+	public String onClickProcessOTP(@RequestParam("emailID") String emailID, Model model) {
+		System.out.println("Invoked onClickProcessOTP()");
+		if (this.registrationService.validateEmailID(emailID)) {
+			int otp = this.registrationService.getOTP();
+			System.out.println("Your otp is : " + otp);
+			boolean isSaved = this.registrationService.saveUserOTP(emailID, otp);
+			this.email = emailID;
+			boolean isSent = this.registrationService.sendOTP(emailID, otp);
+			if (isSent && isSaved) {
+				System.out.println("Mail has been saved and sent to user");
+				model.addAttribute("SendingMessage", "OTP has been sent to your EmailID");
+				return "VerifyOTP";
+			} else {
+				System.out.println("Mail has not been saved and sent to user");
+				model.addAttribute("SendingMessage", "Mail has not been sent ");
+			}
+		} else {
+			model.addAttribute("ValidationEmailID", "EmailID cannot be empty");
+			return "VaccineRegistration";
+		}
+
+		return "VerifyOTP";
+	}
+
+	
+}
