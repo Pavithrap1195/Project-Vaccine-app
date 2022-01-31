@@ -22,7 +22,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="css/style.css">
-<title>Login</title>
+<title>Home</title>
 </head>
 <body
 	style="background-image: url('images/images.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
@@ -32,29 +32,8 @@
 				src="images/logo.jpg" class="logo" />
 		</div>
 	</header>
-	<div class="container-fluid p-0 m-0">
-		<div>
-			<h1>Login page</h1>
-		</div>
-		<div>
-			<h2>${validateMessage }</h2>
-		</div>
-		<div>
-			<h2>${verifyMessage }</h2>
-		</div>
-
-
-		<form action="login.vaccine" method="post" style="text-align: center;">
-			<label>User Name</label> <input name="userName"
-				placeholder="Enter your user name" type="text" />
-			<p style="color: red">${validateUserName }</p>
-			<label>Password</label> <input name="password"
-				placeholder="Enter your password" type="password">
-			<p style="color: red">${validatePassword }</p>
-			<br /> <input type="submit" value="Login" class="btn btn-success">
-
-		</form>
-	</div>
+	<h1>Home Page</h1>
+	<h2>${verifyMessage }</h2>
 </body>
 <footer>
 	<div>Copyright © 2021. All Rights Reserved</div>

@@ -18,14 +18,18 @@ public class SignUpController {
 
 	@Autowired
 	private SignUpService signUpService;
+	
+	@Autowired
+	private OTPController otpController;
 
 	@RequestMapping(value = "/signUp.vaccine", method = RequestMethod.POST)
 	public String onClickSaveSignUpDetails(@ModelAttribute SignUpDTO signUpDTO, Model model) {
 		System.out.println("Invoked onClickSaveSignUpDetails()");
 		if (this.signUpService.validateSignUpDTO(signUpDTO)) {
+			boolean isSent = this.signUpService.sendUsernameAndPassword(signUpDTO.getUserName(), signUpDTO.getPassword(),otpController.getEmail());
 			boolean isSaved = this.signUpService.saveSignUpDTO(signUpDTO);
-			if (isSaved) {
-				model.addAttribute("validateMessage", "Details saved successfully..thank you");
+			if (isSaved && isSent) {
+				model.addAttribute("validateMessage", "Details saved successfully and mail has been sent...Thank you");
 				return "Login";
 			} else {
 				model.addAttribute("validateMessage", "Details not saved try again");

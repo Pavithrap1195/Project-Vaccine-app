@@ -12,5 +12,7 @@ public interface SignUpService {
 	boolean validateSignUpDTO(SignUpDTO signUpDTO);
 	
 	boolean saveSignUpDTO(SignUpDTO signUpDTO);
+	
+	public boolean sendUsernameAndPassword(String userName,String password,String emailID);
 
 }

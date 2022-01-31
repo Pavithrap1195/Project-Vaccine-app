@@ -2,6 +2,8 @@ package com.gov.vaccine.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,9 @@ public class SignUpServiceImpl implements SignUpService {
 
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+
+	@Autowired
+	private JavaMailSender mailSender;
 
 	@Override
 	public boolean validateSignUpDTO(SignUpDTO signUpDTO) {
@@ -82,6 +87,18 @@ public class SignUpServiceImpl implements SignUpService {
 		BeanUtils.copyProperties(signUpDTO, signUpEntity);
 		boolean saved = this.signUpDAO.saveSignUpEntity(signUpEntity);
 		return saved;
+	}
+
+	@Override
+	public boolean sendUsernameAndPassword(String userName, String password, String emailID) {
+		System.out.println("Invoked sendUsernameAndPassword()");
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setTo(emailID);
+		mailMessage.setSubject("Thank you for account creation in Vaccination Drive");
+		mailMessage.setText("Your account has been created successfully.Following is your User Name:- " + userName
+				+ " and Password:- " + password);
+		mailSender.send(mailMessage);
+		return true;
 	}
 
 }
