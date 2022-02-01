@@ -40,4 +40,55 @@ public class LoginDAOImpl implements LoginDAO {
 		return null;
 	}
 
+	@Override
+	public int getLoginAttemptsByUsername(String userName) {
+		System.out.println("Invoked getLoginAttemptsByUsername() ");
+		Session session = null;
+		try {
+			session = factory.openSession();
+			Query query = session.getNamedQuery("getLoginAttemptsByUsername");
+			query.setParameter("USERNAME", userName);
+			int result = (int) query.uniqueResult();
+			System.out.println("Result :- " + result);
+			return result;
+		} catch (HibernateException e) {
+
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("Session is closed");
+			} else {
+				System.out.println("Session is not closed");
+			}
+		}
+		return 0;
+	}
+
+	@Override
+	public boolean updateLoginAttemptsByUsername(String userName, int loginAttempts) {
+		System.out.println("Invoked updateLoginAttemptsByUsername()");
+		Session session = null;
+		try {
+			session = factory.openSession();
+			Query query = session.getNamedQuery("updateLoginAttemptsByUsername");
+			query.setParameter("USERNAME", userName);
+			query.setParameter("ATTEMPTS", loginAttempts);
+			session.beginTransaction();
+			int updated = query.executeUpdate();
+			session.getTransaction().commit();
+			System.out.println("Updated :- " + updated);
+			return true;
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("Session is closed");
+			} else {
+				System.out.println("Session is not closed");
+			}
+		}
+		return false;
+	}
+
 }

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -12,7 +13,10 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "vaccine_signup")
-@NamedQuery(name = "getEntityByUsernameAndPassword", query = "from SignUpEntity where userName=:USERNAME")
+@NamedQueries({
+		@NamedQuery(name = "getEntityByUsernameAndPassword", query = "from SignUpEntity where userName=:USERNAME"),
+		@NamedQuery(name = "getLoginAttemptsByUsername", query = "select loginAttempts from SignUpEntity where userName=:USERNAME"),
+		@NamedQuery(name = "updateLoginAttemptsByUsername", query = "update SignUpEntity set loginAttempts=:ATTEMPTS where userName=:USERNAME") })
 public class SignUpEntity {
 
 	@Id
@@ -23,5 +27,6 @@ public class SignUpEntity {
 	private String gender;
 	private String dateOfBirth;
 	private String password;
+	private int loginAttempts;
 
 }

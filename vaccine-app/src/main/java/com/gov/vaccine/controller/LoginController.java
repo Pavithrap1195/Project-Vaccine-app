@@ -18,8 +18,7 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-	
-	@RequestMapping(value="/login.vaccine",method=RequestMethod.POST)
+	@RequestMapping(value = "/login.vaccine", method = RequestMethod.POST)
 	public String onClickLogin(@RequestParam("userName") String userName, @RequestParam("password") String userPassword,
 			Model model) {
 		System.out.println("Invoked onClickLogin()");
@@ -28,7 +27,9 @@ public class LoginController {
 				model.addAttribute("verifyMessage", "Successfully logged In... Thank You");
 				return "Home";
 			} else {
-				model.addAttribute("verifyMessage", "Failed to login check the username and password");
+				Map<String, String> map = this.loginService.map;
+				model.addAttribute("LoginAttempts", map.get("ATTEMPTS"));
+				model.addAttribute("Wrongpassword", map.get("WRONGPASSWORD"));
 				return "Login";
 			}
 		} else {

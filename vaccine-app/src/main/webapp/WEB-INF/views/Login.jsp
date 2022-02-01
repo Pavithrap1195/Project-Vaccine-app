@@ -36,14 +36,11 @@
 		<div>
 			<h1>Login page</h1>
 		</div>
-		<div>
+		<div style="text-align: center;">
 			<h2>${validateMessage }</h2>
 		</div>
-		<div>
-			<h2>${verifyMessage }</h2>
-		</div>
-
-
+		<p style="text-align: center; color: red">${LoginAttempts }</p>
+		<p style="text-align: center; color: red">${Wrongpassword }</p>
 		<form action="login.vaccine" method="post" style="text-align: center;">
 			<label>User Name</label> <input name="userName"
 				placeholder="Enter your user name" type="text" />
@@ -52,7 +49,6 @@
 				placeholder="Enter your password" type="password">
 			<p style="color: red">${validatePassword }</p>
 			<br /> <input type="submit" value="Login" class="btn btn-success">
-
 		</form>
 	</div>
 </body>
