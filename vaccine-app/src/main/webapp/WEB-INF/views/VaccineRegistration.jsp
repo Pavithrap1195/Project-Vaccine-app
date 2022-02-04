@@ -21,9 +21,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Vaccination</title>
 <link rel="stylesheet" href="css/style.css">
-
 </head>
-
 <body
 	style="background-image: url('images/images.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
 	<header>
@@ -61,42 +59,8 @@
 			</tr>
 		</table>
 	</form>
-
-	<%-- <form action="getOTP.vaccine" method="post" style="text-align: center">
-		<table class="tab">
-			<tr>
-				<td>
-					<h1>Register For Vaccination</h1>
-				</td>
-			</tr>
-			<tr>
-				<td><h2>${ValidationEmailID }</h2></td>
-			</tr>
-			<tr>
-				<td>
-					<h3>An OTP will be sent to your mail for verification</h3>
-				</td>
-			</tr>
-			<tr>
-			<tr>
-				<div class="container col-md-2 mb-3 pl-5">
-					<div class="form-group">
-				<td>
-				<input type="email" placeholder="Enter your EmailID"
-					name="emailID" class="form-control"></td>
-				</div>
-				</div>
-			</tr>
-			<br/>
-			<tr>
-				<td><button type="submit" class="btn btn-primary"
-						style="text-align: center">Get OTP</button></td>
-			</tr>
-		</table>
-	</form> --%>
 </body>
 <footer>
 	<div>Copyright © 2021. All Rights Reserved</div>
 </footer>
-
 </html>

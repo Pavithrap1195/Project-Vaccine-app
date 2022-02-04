@@ -18,16 +18,35 @@ public class SignUpController {
 
 	@Autowired
 	private SignUpService signUpService;
-	
+
 	@Autowired
 	private OTPController otpController;
+
+	private String userName;
+
+	public String getUserName() {
+		return userName;
+	}
+
+	private String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@RequestMapping(value = "/signUp.vaccine", method = RequestMethod.POST)
 	public String onClickSaveSignUpDetails(@ModelAttribute SignUpDTO signUpDTO, Model model) {
 		System.out.println("Invoked onClickSaveSignUpDetails()");
 		if (this.signUpService.validateSignUpDTO(signUpDTO)) {
-			boolean isSent = this.signUpService.sendUsernameAndPassword(signUpDTO.getUserName(), signUpDTO.getPassword(),otpController.getEmail());
+			boolean isSent = this.signUpService.sendUsernameAndPassword(signUpDTO.getUserName(),
+					signUpDTO.getPassword(), otpController.getEmail());
 			boolean isSaved = this.signUpService.saveSignUpDTO(signUpDTO);
+			userName = signUpDTO.getUserName();
+			password = signUpDTO.getPassword();
 			if (isSaved && isSent) {
 				model.addAttribute("validateMessage", "Details saved successfully and mail has been sent...Thank you");
 				return "Login";
@@ -45,7 +64,5 @@ public class SignUpController {
 			model.addAttribute("validateConfirmPassword", map.get("CONFIRMPASSWORD"));
 		}
 		return "Sign-Up";
-
 	}
-
 }

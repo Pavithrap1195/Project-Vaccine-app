@@ -21,8 +21,8 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>OTP Verification</title>
 <link rel="stylesheet" href="css/style.css">
+<title>Reset Password</title>
 </head>
 <body
 	style="background-image: url('images/images.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
@@ -32,39 +32,30 @@
 				src="images/logo.jpg" class="logo" />
 		</div>
 	</header>
-
-	<form action="processOTP.vaccine" method="post">
-		<table class="verifytable">
-			<tr>
-				<td>
-					<div>
-						<h1>Verify OTP</h1>
-					</div>
-					<div>
-						<h2>${SendingMessage}</h2>
-					</div>
-					<div class="container col-md-10 mb-8">
-						<div class="form-group">
-							<input type="number" placeholder="Enter your OTP" name="otp"
-								class="form-control" />
-						</div>
-						<div>
-							<input type="submit" value="Verify and Proceed"
-								class="btn btn-secondary" />
-								<span class="resendotp">
-						<a href="resendOTP.vaccine" style="color: blue;">Resend OTP</a></span>
-						</div>
-						<div>
-							<h3>${ResendingOTP}</h3>
-						</div>
-					</div>
-				</td>
-				<!-- <td><img src="" class="verifyimage"></td> -->
-			</tr>
-		</table>
-	</form>
+	<div class="container-fluid p-0 m-0">
+		<div>
+			<h1>Reset Password</h1>
+		</div>
+		<div style="text-align: center;">
+			<h2>${validateUpdatedMsg }</h2>
+		</div>
+		<form action="resetpassword.vaccine" method="post"
+			style="text-align: center;">
+			<label>User Name</label> <input name="userName"
+				placeholder="Enter your user name" type="text" />
+			<p style="color: red">${validateUsername }</p>
+			<label>Password</label> <input name="password"
+				placeholder="Enter your new password" type="password" />
+			<p style="color: red">${validatePassword }</p>
+			<label>Confirm Password</label> <input name="confirmPassword"
+				placeholder="Enter your confirm password" type="password">
+			<p style="color: red">${validateConfirmPassword }</p>
+			<br /> <input type="submit" value="Reset" class="btn btn-success">
+		</form>
+	</div>
 </body>
 <footer>
 	<div>Copyright © 2021. All Rights Reserved</div>
 </footer>
+</body>
 </html>

@@ -32,7 +32,10 @@
 				src="images/logo.jpg" class="logo" />
 		</div>
 	</header>
-	<h1>Home Page</h1>
+	<h1 style="text-align: center">
+		Home Page <a href="logout.vaccine"
+			style="text-align: right; padding-left: 70%; font-size: large;">Logout</a>
+	</h1>
 	<h2>${verifyMessage }</h2>
 </body>
 <footer>

@@ -49,6 +49,8 @@
 				placeholder="Enter your password" type="password">
 			<p style="color: red">${validatePassword }</p>
 			<br /> <input type="submit" value="Login" class="btn btn-success">
+			<a href="resetpassword.vaccine" >Forgot Password</a>
+			<h2 style="text-align: center;">${validateUpdatedMsg }</h2>
 		</form>
 	</div>
 </body>

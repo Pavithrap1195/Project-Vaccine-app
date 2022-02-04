@@ -11,6 +11,6 @@ public interface LoginService {
 	
 	public boolean verifyUsernameAndPassword(String userName,String userPassword);
 	
-//	public boolean loginAttempts(String userName);
+	public boolean loginAttempts(String userName,String password);
 
 }

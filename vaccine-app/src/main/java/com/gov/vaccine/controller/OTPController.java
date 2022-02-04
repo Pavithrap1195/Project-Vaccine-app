@@ -28,7 +28,6 @@ public class OTPController {
 		System.out.println("Invoked onClickProcessOTP()");
 		if (this.registrationService.validateEmailID(emailID)) {
 			int otp = this.registrationService.getOTP();
-			System.out.println("Your otp is : " + otp);
 			boolean isSaved = this.registrationService.saveUserOTP(emailID, otp);
 			this.email = emailID;
 			boolean isSent = this.registrationService.sendOTP(emailID, otp);
@@ -44,9 +43,7 @@ public class OTPController {
 			model.addAttribute("ValidationEmailID", "EmailID cannot be empty");
 			return "VaccineRegistration";
 		}
-
 		return "VerifyOTP";
 	}
 
-	
 }

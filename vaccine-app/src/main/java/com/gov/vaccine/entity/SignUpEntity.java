@@ -16,7 +16,8 @@ import lombok.Data;
 @NamedQueries({
 		@NamedQuery(name = "getEntityByUsernameAndPassword", query = "from SignUpEntity where userName=:USERNAME"),
 		@NamedQuery(name = "getLoginAttemptsByUsername", query = "select loginAttempts from SignUpEntity where userName=:USERNAME"),
-		@NamedQuery(name = "updateLoginAttemptsByUsername", query = "update SignUpEntity set loginAttempts=:ATTEMPTS where userName=:USERNAME") })
+		@NamedQuery(name = "updateLoginAttemptsByUsername", query = "update SignUpEntity set loginAttempts=:ATTEMPTS where userName=:USERNAME"),
+		@NamedQuery(name = "updatePasswordByUsername", query = "update SignUpEntity set password=:PASSWORD,loginAttempts=:ATTEMPTS where userName=:USERNAME") })
 public class SignUpEntity {
 
 	@Id

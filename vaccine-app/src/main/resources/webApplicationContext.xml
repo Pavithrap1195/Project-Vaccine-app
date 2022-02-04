@@ -8,16 +8,13 @@
          http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<context:component-scan
-		base-package="com.gov.vaccine">
-	</context:component-scan>
-
+		base-package="com.gov.vaccine" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		name="viewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
 	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="username" value="pavithrapxworkz@gmail.com" />
@@ -31,7 +28,6 @@
 			</props>
 		</property>
 	</bean>
-
 	<bean
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="driverManagerDataSource" />
@@ -48,8 +44,6 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
-
-
 	</bean>
 	<bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
@@ -63,17 +57,13 @@
 		<property name="driverClassName"
 			value="${driverManagerDataSource.driverClassName}"></property>
 	</bean>
-
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location"
 			value="/WEB-INF/classes/database.properties"></property>
 	</bean>
-
 	<bean
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
 		id="passwordEncoder">
-
 	</bean>
-
 </beans>

@@ -27,7 +27,6 @@ public class SignUpServiceImpl implements SignUpService {
 	public boolean validateSignUpDTO(SignUpDTO signUpDTO) {
 		System.out.println("Invoked validateSignUpDTO()");
 		boolean validated = false;
-
 		if (signUpDTO.getUserName() != null && !signUpDTO.getUserName().isEmpty()) {
 			validated = true;
 		} else {

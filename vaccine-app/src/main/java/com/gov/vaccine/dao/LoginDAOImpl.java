@@ -48,9 +48,13 @@ public class LoginDAOImpl implements LoginDAO {
 			session = factory.openSession();
 			Query query = session.getNamedQuery("getLoginAttemptsByUsername");
 			query.setParameter("USERNAME", userName);
-			int result = (int) query.uniqueResult();
-			System.out.println("Result :- " + result);
-			return result;
+			if (userName != null) {
+				int result = (int) query.uniqueResult();
+				System.out.println("Result :- " + result);
+				return result;
+			} else {
+				System.out.println("Invalid username");
+			}
 		} catch (HibernateException e) {
 
 		} finally {

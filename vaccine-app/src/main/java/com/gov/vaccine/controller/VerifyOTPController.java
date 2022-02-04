@@ -30,7 +30,6 @@ public class VerifyOTPController {
 			model.addAttribute("ProcessMessage", "Your OTP is not valid");
 			System.out.println("OTP is not valid");
 			return "VaccineRegistration";
-
 		}
 	}
 
