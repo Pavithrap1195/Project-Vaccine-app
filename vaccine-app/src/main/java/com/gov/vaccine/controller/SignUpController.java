@@ -38,6 +38,11 @@ public class SignUpController {
 		this.password = password;
 	}
 
+	@RequestMapping("/getSignUp.vaccine")
+	public String getSignUpPage() {
+		return "Sign-Up";
+	}
+
 	@RequestMapping(value = "/signUp.vaccine", method = RequestMethod.POST)
 	public String onClickSaveSignUpDetails(@ModelAttribute SignUpDTO signUpDTO, Model model) {
 		System.out.println("Invoked onClickSaveSignUpDetails()");

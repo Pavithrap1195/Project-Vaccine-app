@@ -28,10 +28,19 @@
 	style="background-image: url('images/images.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
 	<header>
 		<div>
-			<span>Ministry of health and family welfare</span> <img
-				src="images/logo.jpg" class="logo" />
+			<span style="margin-left: 30%;color: white;">Ministry of health and
+				family welfare</span>
+			<div>
+				<a href="getLogin.vaccine"
+					style="text-align: right; margin-left:5%; margin-bottom: 50%; font-size: large; color: white;">Login</a>
+				<a href="getSignUp.vaccine"
+					style="text-align: right; margin-left:80%; margin-bottom: 50%; font-size: large;color: white;">SignUp</a>
+			</div>
+
+			<!-- <img src="images/logo.jpg" class="logo" /> -->
 		</div>
 	</header>
+
 	<h1 style="text-align: center">
 		Home Page <a href="logout.vaccine"
 			style="text-align: right; padding-left: 70%; font-size: large;">Logout</a>

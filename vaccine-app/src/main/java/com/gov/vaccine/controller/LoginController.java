@@ -18,34 +18,30 @@ public class LoginController {
 	@Autowired
 	private LoginService loginService;
 
-	/*private String userName;
-
-	public String getUserName() {
-		return userName;
+	@RequestMapping("/getLogin.vaccine")
+	public String getLoginPage() {
+		return "Login";
 	}
-*/
+	
 	@RequestMapping(value = "/login.vaccine", method = RequestMethod.POST)
 	public String onClickLogin(@RequestParam("userName") String userName, @RequestParam("password") String userPassword,
 			Model model) {
 		System.out.println("Invoked onClickLogin()");
 		Map<String, String> map = this.loginService.map;
-		if (this.loginService.loginAttempts(userName, userPassword)) {
-			if (this.loginService.validateUserNameAndPassword(userName, userPassword)) {
-				if (this.loginService.verifyUsernameAndPassword(userName, userPassword)) {
-//					this.userName = userName;
-					model.addAttribute("verifyMessage", "Successfully logged In... Thank You");
-					return "Home";
-				} else {
-					model.addAttribute("Wrongpassword", map.get("WRONGPASSWORD"));
-					return "Login";
-				}
+		if (this.loginService.validateUserNameAndPassword(userName, userPassword)) {
+			if (this.loginService.verifyUsernameAndPassword(userName, userPassword)) {
+				model.addAttribute("verifyMessage", "Successfully logged In... Thank You");
+				return "Home";
+			} else if (this.loginService.loginAttempts(userName, userPassword)) {
+				model.addAttribute("Wrongpassword", map.get("WRONGPASSWORD"));
+				return "Login";
 			} else {
-				model.addAttribute("validateUserName", map.get("USERNAME"));
-				model.addAttribute("validatePassword", map.get("PASSWORD"));
+				model.addAttribute("LoginAttempts", map.get("ATTEMPTS"));
+				return "Login";
 			}
 		} else {
-			model.addAttribute("LoginAttempts", map.get("ATTEMPTS"));
-			return "Login";
+			model.addAttribute("validateUserName", map.get("USERNAME"));
+			model.addAttribute("validatePassword", map.get("PASSWORD"));
 		}
 		return "Login";
 	}
