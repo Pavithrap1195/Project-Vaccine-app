@@ -26,7 +26,7 @@
 	style="background-image: url('images/images.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
 	<header>
 		<div>
-			<span style="margin-left: 30%;color: white;">Ministry of health and
+			<span style="margin-left: 8%; color: white; font-size: 35px;">Ministry of health and
 				family welfare</span>
 			<div>
 				<a href="getLogin.vaccine"

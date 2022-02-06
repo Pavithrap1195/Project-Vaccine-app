@@ -28,25 +28,31 @@
 	style="background-image: url('images/images.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%;">
 	<header>
 		<div>
-			<span style="margin-left: 30%;color: white;">Ministry of health and
-				family welfare</span>
+			<span style="margin-left: 8%; color: white; font-size: 35px;">Ministry of
+				health and family welfare</span>
 			<div>
 				<a href="getLogin.vaccine"
-					style="text-align: right; margin-left:5%; margin-bottom: 50%; font-size: large; color: white;">Login</a>
+					style="text-align: right; margin-left: 5%; margin-bottom: 50%; font-size: large; color: white;">Login</a>
 				<a href="getSignUp.vaccine"
-					style="text-align: right; margin-left:80%; margin-bottom: 50%; font-size: large;color: white;">SignUp</a>
+					style="text-align: right; margin-left: 80%; margin-bottom: 50%; font-size: large; color: white;">SignUp</a>
 			</div>
 
 			<!-- <img src="images/logo.jpg" class="logo" /> -->
 		</div>
 	</header>
 
-	<h1 style="text-align: center">
-		Home Page <a href="logout.vaccine"
-			style="text-align: right; padding-left: 70%; font-size: large;">Logout</a>
-	</h1>
-	<h2>${verifyMessage }</h2>
-</body>
+<table>
+<tr>
+<td> <div style="text-align: center; margin-left: 550px;font-size: 28px; font-weight: bold;">Welcome to Co-Vaccine</div></td>
+		<td ><div style="margin-left: 310px; color: green;font-size: large;">${username}</div></td>|
+<td><a href="logout.vaccine"
+			style="text-align: right; margin-left: 20px; font-size: large;"class="btn btn-primary"; role="button";>Logout</a></td>
+</tr>
+</table>
+	 
+	<h2 style="margin-left: 560px; color: green;font-size: medium; font-weight: bold;">${verifyMessage}</h2>
+	<h2 style="margin-left: 560px; color: green;font-size: medium; font-weight: bold;">${savedMsg}</h2>
+<a href="addMember.vaccine" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-left: 600px">Add Member</a></body>
 <footer>
 	<div>Copyright © 2021. All Rights Reserved</div>
 </footer>

@@ -31,6 +31,7 @@ public class LoginController {
 		if (this.loginService.validateUserNameAndPassword(userName, userPassword)) {
 			if (this.loginService.verifyUsernameAndPassword(userName, userPassword)) {
 				model.addAttribute("verifyMessage", "Successfully logged In... Thank You");
+				model.addAttribute("username", userName);
 				return "Home";
 			} else if (this.loginService.loginAttempts(userName, userPassword)) {
 				model.addAttribute("Wrongpassword", map.get("WRONGPASSWORD"));
